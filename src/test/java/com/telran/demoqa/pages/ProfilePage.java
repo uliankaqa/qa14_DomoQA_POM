@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ProfilePage extends PageBase{
     public ProfilePage(WebDriver driver) {
         super(driver);
@@ -13,6 +15,12 @@ public class ProfilePage extends PageBase{
 
     @FindBy(id="submit")
     WebElement logoutBtn;
+
+    @FindBy(xpath = "//*[@id='delete-record-undefined']")
+    List<WebElement> bookList;
+
+    @FindBy(id="closeSmallModal-ok")
+    WebElement okBtn;
 
     public ProfilePage verifyUserName(String uName){
         if(user.getText().equalsIgnoreCase(uName)){
@@ -26,5 +34,15 @@ public class ProfilePage extends PageBase{
         System.out.println("Let's out from profile");
         logoutBtn.click();
         return new LoginPage(driver);
+    }
+
+    public ProfilePage clickOnTrashToDeleteBook() {
+        pause(500);
+        bookList.get(0).click();
+        pause(500);
+        okBtn.click();
+        pause(500);
+        driver.switchTo().alert().accept();
+        return this;
     }
 }

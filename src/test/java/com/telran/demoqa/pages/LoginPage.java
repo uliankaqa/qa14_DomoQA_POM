@@ -21,6 +21,9 @@ public class LoginPage extends PageBase{
     @FindBy(className = "main-header")
     WebElement loginHeader;
 
+    @FindBy(id="newUser")
+    WebElement newUserBtn;
+
     public LoginPage verifyLoginPage(){
         Assert.assertEquals(loginHeader.getText(), "Login");
         return  this;
@@ -37,5 +40,9 @@ public class LoginPage extends PageBase{
         type(pswd, password);
         loginBtn.click();
         return this;
+    }
+    public RegisterPage clickOnNewUserButton(){
+        newUserBtn.click();
+        return new RegisterPage(driver);
     }
 }

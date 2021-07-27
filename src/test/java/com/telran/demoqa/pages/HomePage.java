@@ -12,10 +12,11 @@ public class HomePage extends PageBase {
     }
 
     @FindBy(xpath="//div[@class='category-cards']/div[6]")
+    /*---//div[@class='category-cards']/div[.='Book Store Application']---*/
     WebElement bookStoreBtn;
 
     public BookStorePage goToBookStore(){
-        clickWithAction(bookStoreBtn, 0, 300);
+        clickWithAction(bookStoreBtn, 0, 500);
         return new BookStorePage(driver);
     }
 }
