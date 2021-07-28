@@ -19,8 +19,14 @@ public class RegistrationTests extends TestBase{
 
     @Test
     public void registerNewUserPositiveTest(){
-        new RegisterPage(driver).registerNewUser(UserData.NEW_USER_FIRST_NAME,
-                UserData.NEW_USER_LAST_NAME, UserData.NEW_USER_NAME, UserData.USER_PASSWORD);
-        //Assert.assertEquals(driver.switchTo().alert().getText(), "User Register Successfully.");
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
+        new RegisterPage(driver).fillRegistrationForm( UserData.NEW_USER_FIRST_NAME,
+                UserData.NEW_USER_LAST_NAME,
+                UserData.NEW_USER_NAME + i,
+                UserData.USER_PASSWORD+i)
+                .clickOnCapcher()
+                .clickOnRegisterBth();
+
+       // Assert.assertEquals(new RegisterPage(driver).getMessageFromRegistrationAlert(), "User Register Successfully.");
     }
 }

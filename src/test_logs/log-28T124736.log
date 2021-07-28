@@ -1,0 +1,6 @@
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']found.
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //span[.='Browser Windows']
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //span[.='Browser Windows']found.
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.id: messageWindowButton
+12:47:38 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.id: messageWindowButtonfound.

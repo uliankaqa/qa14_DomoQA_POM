@@ -34,4 +34,10 @@ public class BookStoreApplication extends PageBase {
         clickWithAction(profileBtn, 0, 700);
         return new ProfilePage(driver);
     }
+
+    public static class SidePanelPage extends PageBase{
+        public SidePanelPage(WebDriver driver) {
+            super(driver);
+        }
+    }
 }

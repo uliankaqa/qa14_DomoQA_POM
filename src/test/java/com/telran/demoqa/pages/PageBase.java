@@ -1,10 +1,8 @@
 package com.telran.demoqa.pages;
 
+import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
@@ -47,6 +45,16 @@ public class PageBase {
         File screenshotEmptyField = element.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshotEmptyField, new File(System
                 .getProperty("user.dir") + "/screenshots/" + new Random().nextInt() + ".png"));
+    }
+
+    public void takeScreenshot(String pathToFiele) {
+        File tmp = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = new File(pathToFiele);
+        try {
+            Files.copy(tmp,screenshot);
+        }catch (IOException e) {
+            e.fillInStackTrace();
+        }
     }
 
 }
