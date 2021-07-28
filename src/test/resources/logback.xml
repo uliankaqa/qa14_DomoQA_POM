@@ -10,7 +10,7 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>src/test_logs/log-${bySecond}.log</file>
+        <file>test_logs/log-${bySecond}.log</file>
 
         <immediateFlush>true</immediateFlush>
 

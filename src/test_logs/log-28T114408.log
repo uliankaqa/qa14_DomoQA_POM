@@ -1,8 +1,0 @@
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']found.
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //span[.='Alerts']
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //span[.='Alerts']found.
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.id: promtButton
-11:44:10 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.id: promtButtonfound.
-11:44:11 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.id: promptResult
-11:44:11 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.id: promptResultfound.

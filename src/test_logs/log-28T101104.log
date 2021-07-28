@@ -1,8 +1,0 @@
-10:11:05 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']
-10:11:05 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']found.
-10:11:05 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.xpath: //span[.='Browser Windows']
-10:11:05 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.xpath: //span[.='Browser Windows']found.
-10:11:06 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.id: tabButton
-10:11:06 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.id: tabButtonfound.
-10:11:06 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - Start search By.id: sampleHeading
-10:11:06 [Test worker] INFO  com.telran.demoqa.helpers.MyListener - By.id: sampleHeadingfound.
