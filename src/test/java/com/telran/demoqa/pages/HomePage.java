@@ -19,6 +19,12 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//div[@class='category-cards']/div[.='Alerts, Frame & Windows']")
     WebElement alertFrameWindowBtn;
 
+    @FindBy(xpath = "//div//h5[.='Widgets']")
+    WebElement widgetsBtn;
+
+    @FindBy(xpath = "//div[@class='category-cards']/div[2]")
+    WebElement formsBtn;
+
     public BookStorePage goToBookStore(){
         clickWithAction(bookStoreBtn, 0, 500);
         return new BookStorePage(driver);
@@ -29,4 +35,13 @@ public class HomePage extends PageBase {
         return new SidePanelPage(driver);
     }
 
+    public SidePanelPage goToWidgetsPage() {
+        clickWithAction(widgetsBtn, 0, 300);
+        return new SidePanelPage(driver);
+    }
+
+    public SidePanelPage goToFormsMenu() {
+        clickWithAction(formsBtn, 0, 300);
+        return new SidePanelPage(driver);
+    }
 }
