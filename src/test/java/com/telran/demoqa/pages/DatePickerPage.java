@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
 
@@ -40,9 +42,7 @@ public class DatePickerPage extends PageBase{
 
     @FindBy(css = ".react-datepicker__time-list-item ")
     List<WebElement> timeList;
-    private final String defaultMonth = "August";
-    private final String defaultDay = "2";
-    private final String defaultYear = "2021";
+
 
     /*public DatePickerPage selectDateToInput(String month, String year, String day) {
         datePickerInput.click();
@@ -54,28 +54,29 @@ public class DatePickerPage extends PageBase{
 
     public DatePickerPage selectDateToInput(String month, String year, String day) {
         datePickerInput.click();
-        if(!month.equals(defaultMonth)) {
-            new Select(selectMonth).selectByVisibleText(month);
-        }
-        if(!year.equals(defaultYear)) {
-            new Select(selectYear).selectByVisibleText(year);
-        }
-        if(!day.equals(defaultDay)) {
-            setDay(month, day);
-        }
+        pause(500);
+        new Select(selectMonth).selectByVisibleText(month);
+        new Select(selectYear).selectByVisibleText(year);
+        setDay(month, day);
+
         return this;
     }
 
-    public DatePickerPage selectData(String month, String year, String day){
+    public DatePickerPage selectDate(String month, String year, String day){
         dateAndTimePickerInput.click();
         pause(500);
-        if(!month.equals(defaultMonth)) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("Current date: " + dtf.format(now));
+        String[] dateNow = dtf.format(now).split("/");
+
+        if(!month.equals(dateNow[1])) {
             selectElementOnDropDownByText(selectMonthWithTime, month);
         }
-        if(!year.equals(defaultYear)) {
+        if(!year.equals(dateNow[0])) {
             selectElementOnDropDownByText(selectYearWithTime, year);
         }
-        if(!day.equals(defaultDay)) {
+        if(!day.equals(dateNow[2])) {
             setDay(month, day);
         }
         return this;

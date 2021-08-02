@@ -23,7 +23,7 @@ public class DatePickerTests extends TestBase{
 
     @Test
     public void dataPickerDateAndTimeTest(){
-       new DatePickerPage(driver).selectData("May", "2021", "4").selectTime("12:45");
+       new DatePickerPage(driver).selectDate("May", "2021", "4").selectTime("12:45");
        Assert.assertTrue(new DatePickerPage(driver).getDateAndTime().contains("May 4, 2021 12:45 PM"));
     }
 }
