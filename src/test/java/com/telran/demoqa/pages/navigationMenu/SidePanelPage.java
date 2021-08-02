@@ -1,9 +1,6 @@
 package com.telran.demoqa.pages.navigationMenu;
 
-import com.telran.demoqa.pages.AlertPage;
-import com.telran.demoqa.pages.BrowserWindowsPage;
-import com.telran.demoqa.pages.PageBase;
-import com.telran.demoqa.pages.PracticeFormPage;
+import com.telran.demoqa.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +22,11 @@ public class SidePanelPage extends PageBase {
     @FindBy(xpath = "//span[.='Practice Form']")
     WebElement practiceFormBtn;
 
+    @FindBy(xpath = "//span[.='Date Picker']")
+    WebElement datePickerBtn;
+
+    @FindBy(xpath = "//span[.='Droppable']")
+    WebElement droppableBtn;
 
     public BrowserWindowsPage selectBrowserWindows(){
         clickWithAction(browserWindowsBtn, 0,300);
@@ -44,5 +46,15 @@ public class SidePanelPage extends PageBase {
     public PracticeFormPage selectPracticeForm() {
         clickWithAction(practiceFormBtn, 0, 300);
         return new PracticeFormPage(driver);
+    }
+
+    public DatePickerPage selectDatePicker() {
+        clickWithAction(datePickerBtn, 0, 300);
+        return new DatePickerPage(driver);
+    }
+
+    public DragAndDropPage selectDroppable() {
+        clickWithAction(droppableBtn, 0, 300);
+        return new DragAndDropPage(driver);
     }
 }

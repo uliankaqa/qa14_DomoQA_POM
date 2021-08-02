@@ -57,4 +57,15 @@ public class PageBase {
         }
     }
 
+    public void typeWithAction(WebElement element, int x, int y, String text) {
+        if (text != null) {
+            clickWithAction(element,x,y);
+            element.clear();
+            element.sendKeys(text);
+        }
+    }
+    public void closeBanner() {
+        driver.findElement(By.id("close-fixedban")).click();
+    }
+
 }

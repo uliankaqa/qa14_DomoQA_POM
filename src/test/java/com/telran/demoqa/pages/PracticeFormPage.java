@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.sql.Array;
+import java.util.Collection;
 
 public class PracticeFormPage extends PageBase {
     public PracticeFormPage(WebDriver driver) {
@@ -24,11 +25,11 @@ public class PracticeFormPage extends PageBase {
     @FindBy(id = "dateOfBirthInput")
     WebElement dateOfBirth;
 
-    @FindBy(xpath = "//div[@id='subjectsContainer']/div/div[1]/div[@class='css-1g6gooi']")
+    @FindBy(id = "subjectsInput")
     WebElement subjectInput;
 
     @FindBy(id = "react-select-2-option-0")
-    WebElement selectInput;
+    WebElement selectIput;
 
     @FindBy(id="firstName")
     WebElement firstNameInput;
@@ -54,6 +55,29 @@ public class PracticeFormPage extends PageBase {
     @FindBy(xpath="//input[@id='hobbies-checkbox-3']/../label")
     WebElement hobbyMusics;
 
+    @FindBy(id = "uploadPicture")
+    WebElement uploadPictureBtn;
+
+    @FindBy(id = "currentAddress")
+    WebElement addressInput;
+
+    @FindBy(id = "state")
+    WebElement stateDropBox;
+
+    @FindBy(id = "react-select-3-input")
+    WebElement stateBlock;
+
+    @FindBy(id = "city")
+    WebElement cityDropBox;
+
+    @FindBy(id = "react-select-4-input")
+    WebElement cityBlock;
+
+    @FindBy(id = "example-modal-sizes-title-lg")
+    WebElement modalTitle;
+
+    @FindBy(id = "closeLargeModal")
+    WebElement closeBtn;
 
     public PracticeFormPage fillPersonalDate(String firstName, String lastName, String eMail, String telNum) {
         type(firstNameInput, firstName);
@@ -91,14 +115,14 @@ public class PracticeFormPage extends PageBase {
     public PracticeFormPage addSubject( String[] subjects) {
         for (int i=0; i<subjects.length; i++ ) {
             if(subjects[i] != null) {
-                subjectInput.click();
-               // subjectInput.sendKeys(subjects[i]);
-                // selectInput.click();
-                //subjectInput.sendKeys(Keys.ENTER);
+                type(subjectInput,subjects[i]);
+                selectIput.click();
+
             }
         }
         return this;
     }
+
 
     public PracticeFormPage chooseHobbies(String[] hobbies) {
         for (int i=0; i<hobbies.length; i++ ) {
@@ -115,26 +139,42 @@ public class PracticeFormPage extends PageBase {
         return this;
     }
     public PracticeFormPage typeAddress(String address) {
+        typeWithAction(addressInput, 0, 500, address);
 
         return this;
     }
     public PracticeFormPage inputState(String state) {
-
+        stateDropBox.click();
+        stateBlock.sendKeys(state);
+        stateBlock.sendKeys(Keys.ENTER);
         return this;
     }
 
     public PracticeFormPage inputCity(String city){
-
+        cityDropBox.click();
+        cityBlock.sendKeys(city);
+        cityBlock.sendKeys(Keys.ENTER);
         return this;
     }
 
     public PracticeFormPage uploadFile(String photoUrl) {
-
+        uploadPictureBtn.sendKeys(photoUrl);
+        pause(2000);
         return this;
     }
 
     public PracticeFormPage submit() {
         clickWithAction(submitBtn, 0, 500);
+        return this;
+    }
+
+    public String getTitleFromDialog() {
+        return modalTitle.getText();
+    }
+
+    public PracticeFormPage closeSucceusDialog() {
+        closeBanner();
+        closeBtn.click();
         return this;
     }
 }

@@ -25,6 +25,9 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//div[@class='category-cards']/div[2]")
     WebElement formsBtn;
 
+    @FindBy(xpath = "//h5[.='Interactions']")
+    WebElement interactionBtn;
+
     public BookStorePage goToBookStore(){
         clickWithAction(bookStoreBtn, 0, 500);
         return new BookStorePage(driver);
@@ -42,6 +45,11 @@ public class HomePage extends PageBase {
 
     public SidePanelPage goToFormsMenu() {
         clickWithAction(formsBtn, 0, 300);
+        return new SidePanelPage(driver);
+    }
+
+    public SidePanelPage goToInteractionPage() {
+        clickWithAction(interactionBtn, 0, 200);
         return new SidePanelPage(driver);
     }
 }

@@ -3,6 +3,7 @@ package com.telran.demoqa.tests;
 import com.telran.demoqa.data.StudentData;
 import com.telran.demoqa.pages.HomePage;
 import com.telran.demoqa.pages.PracticeFormPage;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,5 +25,7 @@ public class StudentRegistrationTest extends TestBase{
                 .typeAddress(StudentData.ADDRESS)
                 .inputState(StudentData.STATE)
                 .inputCity(StudentData.CITY).submit();
+        Assert.assertTrue(new PracticeFormPage(driver).getTitleFromDialog().contains("Thanks for submitting the form"));
+        new PracticeFormPage(driver).closeSucceusDialog();
     }
 }
