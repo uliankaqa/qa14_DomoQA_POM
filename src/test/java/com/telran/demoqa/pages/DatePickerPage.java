@@ -40,23 +40,33 @@ public class DatePickerPage extends PageBase{
     @FindBy(css = ".react-datepicker__time-list-item ")
     List<WebElement> timeList;
 
-    public DatePickerPage selectDateToInput(String month, String year, String day) {
+    /*public DatePickerPage selectDateToInput(String month, String year, String day) {
         datePickerInput.click();
         setMonth(selectMonth, month);
         setYear(selectYear, year);
+        setDay(month, day);
+        return this;
+    }*/
+
+    public DatePickerPage selectDateToInput(String month, String year, String day) {
+        datePickerInput.click();
+        new Select(selectMonth).selectByVisibleText(month);
+        new Select(selectYear).selectByVisibleText(year);
         setDay(month, day);
         return this;
     }
 
     public DatePickerPage selectData(String month, String year, String day){
         dateAndTimePickerInput.click();
-        pause(500);
-        selectMonthWithTime.click();
-        setMonth(selectMonthWithTime, month);
+        new Select(selectMonthWithTime).selectByVisibleText(month);
+        new Select(selectYearWithTime).selectByVisibleText(year);
+        if(getIndexElementWithDate(month,day)>= 0) {
+            selectDay.get(getIndexElementWithDate(month,day)).click();
+        }
 
-
+        /*setMonth(selectMonthWithTime, month);
         setYear(selectYearWithTime, year);
-        setDay(month, day);
+        setDay(month, day);*/
         return this;
     }
 
