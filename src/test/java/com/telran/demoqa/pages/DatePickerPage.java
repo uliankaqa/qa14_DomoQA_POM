@@ -1,5 +1,6 @@
 package com.telran.demoqa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +20,7 @@ public class DatePickerPage extends PageBase{
     @FindBy(css = ".react-datepicker__month-select")
     WebElement selectMonth;
 
-    @FindBy(css = ".react-datepicker__month-dropdown")
+    @FindBy(css = ".react-datepicker__month-read-view")
     WebElement selectMonthWithTime;
 
 
@@ -39,6 +40,9 @@ public class DatePickerPage extends PageBase{
 
     @FindBy(css = ".react-datepicker__time-list-item ")
     List<WebElement> timeList;
+    private final String defaultMonth = "August";
+    private final String defaultDay = "2";
+    private final String defaultYear = "2021";
 
     /*public DatePickerPage selectDateToInput(String month, String year, String day) {
         datePickerInput.click();
@@ -50,31 +54,42 @@ public class DatePickerPage extends PageBase{
 
     public DatePickerPage selectDateToInput(String month, String year, String day) {
         datePickerInput.click();
-        new Select(selectMonth).selectByVisibleText(month);
-        new Select(selectYear).selectByVisibleText(year);
-        setDay(month, day);
+        if(!month.equals(defaultMonth)) {
+            new Select(selectMonth).selectByVisibleText(month);
+        }
+        if(!year.equals(defaultYear)) {
+            new Select(selectYear).selectByVisibleText(year);
+        }
+        if(!day.equals(defaultDay)) {
+            setDay(month, day);
+        }
         return this;
     }
 
     public DatePickerPage selectData(String month, String year, String day){
         dateAndTimePickerInput.click();
-        new Select(selectMonthWithTime).selectByVisibleText(month);
-        new Select(selectYearWithTime).selectByVisibleText(year);
-        if(getIndexElementWithDate(month,day)>= 0) {
-            selectDay.get(getIndexElementWithDate(month,day)).click();
+        pause(500);
+        if(!month.equals(defaultMonth)) {
+            selectElementOnDropDownByText(selectMonthWithTime, month);
         }
-
-        /*setMonth(selectMonthWithTime, month);
-        setYear(selectYearWithTime, year);
-        setDay(month, day);*/
+        if(!year.equals(defaultYear)) {
+            selectElementOnDropDownByText(selectYearWithTime, year);
+        }
+        if(!day.equals(defaultDay)) {
+            setDay(month, day);
+        }
         return this;
     }
 
     private void setYear(WebElement elem, String year){
         new Select(elem).selectByVisibleText(year);
     }
-    private void setMonth(WebElement elem, String month){
-        new Select(elem).selectByVisibleText(month);
+    private void selectElementOnDropDownByText(WebElement elem, String text){
+        elem.click();
+        WebElement dropDown = driver.findElement(By.xpath(String.format("//div[.='%s']", text)));
+        if(!dropDown.isSelected()) {
+            dropDown.click();
+        }
     }
     private void setDay(String month, String day){
         if(getIndexElementWithDate(month,day)>= 0) {
@@ -103,7 +118,10 @@ public class DatePickerPage extends PageBase{
     }
 
     public DatePickerPage selectTime(String time) {
-
+        WebElement selectedTime = driver.findElement(By.xpath(String.format("//li[.='%s']", time)));
+        if(!selectedTime.isSelected()){
+            selectedTime.click();
+        }
         return this;
     }
     private int getIndexElementWithTime(String time){
