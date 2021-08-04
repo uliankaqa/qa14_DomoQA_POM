@@ -120,9 +120,8 @@ public class DatePickerPage extends PageBase{
 
     public DatePickerPage selectTime(String time) {
         WebElement selectedTime = driver.findElement(By.xpath(String.format("//li[.='%s']", time)));
-        if(!selectedTime.isSelected()){
-            selectedTime.click();
-        }
+        selectedTime.click();
+
         return this;
     }
     private int getIndexElementWithTime(String time){

@@ -28,6 +28,8 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//h5[.='Interactions']")
     WebElement interactionBtn;
 
+    @FindBy(xpath = "//div//h5[.='Elements']")
+    WebElement elementsBtn;
     public BookStorePage goToBookStore(){
         clickWithAction(bookStoreBtn, 0, 500);
         return new BookStorePage(driver);
@@ -50,6 +52,11 @@ public class HomePage extends PageBase {
 
     public SidePanelPage goToInteractionPage() {
         clickWithAction(interactionBtn, 0, 200);
+        return new SidePanelPage(driver);
+    }
+
+    public SidePanelPage goToElementsPanel(){
+        clickWithAction(elementsBtn, 0, 200);
         return new SidePanelPage(driver);
     }
 }

@@ -72,4 +72,9 @@ public class AlertPage extends PageBase{
     public String getConfirmMessageResult() {
         return promtResult.getText();
     }
+
+    public AlertPage acceptAlert() {
+        driver.switchTo().alert().accept();
+        return this;
+    }
 }

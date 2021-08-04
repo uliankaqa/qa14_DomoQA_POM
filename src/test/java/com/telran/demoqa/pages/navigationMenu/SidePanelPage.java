@@ -28,6 +28,15 @@ public class SidePanelPage extends PageBase {
     @FindBy(xpath = "//span[.='Droppable']")
     WebElement droppableBtn;
 
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBoxBtn;
+
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement linksBtn;
+
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement brokenLinksAndImagesBtn;
+
     public BrowserWindowsPage selectBrowserWindows(){
         clickWithAction(browserWindowsBtn, 0,300);
         return new BrowserWindowsPage(driver);
@@ -57,4 +66,20 @@ public class SidePanelPage extends PageBase {
         clickWithAction(droppableBtn, 0, 300);
         return new DragAndDropPage(driver);
     }
+
+    public ElementsPage selecttextBox(){
+        textBoxBtn.click();
+        return new ElementsPage(driver);
+    }
+
+    public BrokenLinksAndImagesPage selectLinks(){
+        linksBtn.click();
+        return new BrokenLinksAndImagesPage(driver);
+    }
+
+    public BrokenLinksAndImagesPage selectBrokenPageAndImages(){
+        clickWithAction(brokenLinksAndImagesBtn, 0, 500);
+        return new BrokenLinksAndImagesPage(driver);
+    }
+
 }
